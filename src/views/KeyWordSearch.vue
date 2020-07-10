@@ -17,7 +17,10 @@
 </template>
 
 <script>
-const googleTrends = require('google-trends-api');
+import axios from 'axios';
+
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+
 export default {
   name: 'keywordsearch',
   data() {
@@ -28,14 +31,14 @@ export default {
   },
   methods: {
     async statistics() {
-      try {
-        this.apiResult = await googleTrends.interestOverTime({
-          keyword: this.keyword,
+      axios
+        .get('http://localhost:5000/new')
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
         });
-        console.log(info);
-      } catch (err) {
-        console.log(err);
-      }
     },
   },
 };
