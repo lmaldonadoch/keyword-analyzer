@@ -21,6 +21,9 @@
 </template>
 
 <script>
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+
 export default {
   name: 'register',
   data() {
@@ -31,14 +34,22 @@ export default {
     };
   },
   methods: {
-    pressed() {
-      alert('submitted');
+    async pressed() {
+      try {
+        const user = await firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.email, this.password);
+        this.$router.replace({ name: 'keywordsearch' });
+        console.log(user);
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 .error {
   color: lightcoral;
   font-size: 18px;

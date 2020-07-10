@@ -4,11 +4,19 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/login">Log in</router-link> |
       <router-link to="/register">Register</router-link> |
-      <router-link to="/main">Main</router-link>
+      <router-link to="/keywordsearch">Main</router-link>
     </div>
+    <Header />
     <router-view />
   </div>
 </template>
+
+<script>
+import Header from '@/components/Header.vue';
+export default {
+  components: { Header: Header },
+};
+</script>
 
 <style lang="scss">
 #app {
