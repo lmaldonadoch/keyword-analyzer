@@ -14,23 +14,29 @@
       <button type="submit">Look</button>
     </form>
 
-    <div>
-      <b-table striped hover :items="apiResult"></b-table>
+    <div class="row container-fluid">
+      <div class="col-6" v-if="apiResult.length > 0">
+        <line-chart :data="chartData"></line-chart>
+      </div>
+      <b-table striped hover :items="apiResult" class="col-6"></b-table>
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import { Line } from 'vue-chartjs';
 
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 export default {
+  extends: Line,
   name: 'keywordsearch',
   data() {
     return {
       apiResult: [],
       keyword: '',
+      chartData: {},
     };
   },
   methods: {
@@ -40,12 +46,12 @@ export default {
           .post('http://localhost:5000/new', { keyword: this.keyword })
           .then((response) => {
             JSON.parse(response.data).default.timelineData.forEach((object) => {
-              console.log(object.formattedTime, object.value);
               this.apiResult.push({
                 date: object.formattedTime,
                 value: object.value,
               });
-            }, console.log(this.apiResponse));
+              this.chartData[object.formattedTime] = object.value[0];
+            });
           })
           .catch((err) => {
             console.log(err);
