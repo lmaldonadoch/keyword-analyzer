@@ -13,6 +13,10 @@
 
       <button type="submit">Look</button>
     </form>
+
+    <div>
+      <b-table striped hover :items="apiResult"></b-table>
+    </div>
   </div>
 </template>
 
@@ -25,20 +29,27 @@ export default {
   name: 'keywordsearch',
   data() {
     return {
-      apiResult: null,
+      apiResult: [],
       keyword: '',
     };
   },
   methods: {
     async statistics() {
-      axios
-        .get('http://localhost:5000/new')
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      (this.apiResult = []),
+        axios
+          .post('http://localhost:5000/new', { keyword: this.keyword })
+          .then((response) => {
+            JSON.parse(response.data).default.timelineData.forEach((object) => {
+              console.log(object.formattedTime, object.value);
+              this.apiResult.push({
+                date: object.formattedTime,
+                value: object.value,
+              });
+            }, console.log(this.apiResponse));
+          })
+          .catch((err) => {
+            console.log(err);
+          });
     },
   },
 };

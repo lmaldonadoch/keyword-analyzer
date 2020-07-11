@@ -4,6 +4,12 @@ import router from './router';
 import store from './store';
 import axios from 'axios';
 import firebase from 'firebase/app';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+// Install BootstrapVue
+Vue.use(BootstrapVue);
 
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
