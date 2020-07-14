@@ -1,36 +1,33 @@
 <template>
   <div>
-    <form @submit.prevent="statistics">
-      Api request
+    <h2>Enter a keyword and find out how it is currently trending!</h2>
+    <div class="keyword">
+      <input type="text" v-model="keyword" placeholder="keyword to look for" />
+    </div>
 
-      <div class="keyword">
-        <input
-          type="text"
-          v-model="keyword"
-          placeholder="keyword to look for"
-        />
-      </div>
-
-      <button type="submit">Look</button>
-    </form>
+    <div class="buttons-container">
+      <button @click="statistics">Look</button>
+    </div>
 
     <div class="row container-fluid">
-      <div class="col-6" v-if="apiResult.length > 0">
+      <div class="col-12 chart" v-if="apiResult.length > 0">
         <line-chart :data="chartData"></line-chart>
       </div>
-      <b-table striped hover :items="apiResult" class="col-6"></b-table>
+
+      <div class="container col-8">
+        <b-table striped hover :items="apiResult"></b-table>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import { Line } from 'vue-chartjs';
+import Chart from 'vue-chartjs';
 
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 export default {
-  extends: Line,
   name: 'keywordsearch',
   data() {
     return {
@@ -48,7 +45,7 @@ export default {
             JSON.parse(response.data).default.timelineData.forEach((object) => {
               this.apiResult.push({
                 date: object.formattedTime,
-                value: object.value,
+                value: object.value[0],
               });
               this.chartData[object.formattedTime] = object.value[0];
             });
@@ -61,4 +58,29 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+h2 {
+  padding-top: 30px;
+}
+
+input {
+  width: 400px;
+  padding: 30px;
+  margin: 20px !important;
+  font-size: 21px;
+  height: 30px;
+}
+
+button {
+  background-color: #7480ff;
+  margin: 20px 0 40px !important;
+  padding: 15px 30px;
+  border: none;
+  color: #fff;
+  width: 400px;
+}
+
+.chart {
+  margin-bottom: 40px;
+}
+</style>

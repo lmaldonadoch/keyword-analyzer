@@ -3,16 +3,13 @@
     <div class="error" v-if="error">
       {{ error.message }}
     </div>
-
     <form @submit.prevent="pressed">
-      Register
-
       <div class="email">
-        <input type="text" v-model="email" placeholder="email" />
+        <input type="text" v-model="email" placeholder="Email" />
       </div>
 
       <div class="password">
-        <input type="password" v-model="password" placeholder="password" />
+        <input type="password" v-model="password" placeholder="Password" />
       </div>
 
       <button type="submit">Register</button>
@@ -60,11 +57,15 @@ input {
   padding: 30px;
   margin: 20px;
   font-size: 21px;
+  height: 30px;
 }
 
 button {
+  background-color: #7480ff;
+  margin: 20px 0 0;
+  padding: 15px 30px;
+  border: none;
+  color: #fff;
   width: 400px;
-  height: 75px;
-  font-size: 100%;
 }
 </style>
