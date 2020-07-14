@@ -5,9 +5,7 @@
       <input type="text" v-model="keyword" placeholder="keyword to look for" />
     </div>
 
-    <div class="buttons-container">
-      <button @click="statistics">Look</button>
-    </div>
+    <button @click="interestTrend">Interest Trend</button>
 
     <div class="row container-fluid">
       <div class="col-12 chart" v-if="apiResult.length > 0">
@@ -37,10 +35,12 @@ export default {
     };
   },
   methods: {
-    async statistics() {
+    async interestTrend() {
       (this.apiResult = []),
         axios
-          .post('http://localhost:5000/new', { keyword: this.keyword })
+          .post('https://vue-node-server.herokuapp.com/new', {
+            keyword: this.keyword,
+          })
           .then((response) => {
             JSON.parse(response.data).default.timelineData.forEach((object) => {
               this.apiResult.push({
