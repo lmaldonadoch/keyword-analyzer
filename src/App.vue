@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/login">Log in</router-link> |
-      <router-link to="/register">Register</router-link> |
-      <router-link to="/keywordsearch">Main</router-link>
-    </div>
     <Header />
-    <router-view />
+    <transition
+      name="view"
+      appear
+      enter-active-class="animate__animated animate__zoomInRight delay"
+      leave-active-class="animate__animated animate__zoomOutLeft"
+    >
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -28,14 +30,18 @@ export default {
 
 #nav {
   padding: 30px;
-
+  background: #fdd32a;
   a {
     font-weight: bold;
-    color: #2c3e50;
-
+    color: #fff;
+    padding: 10px;
     &.router-link-exact-active {
-      color: #42b983;
+      color: #7480ff;
     }
+  }
+
+  .delay {
+    animation-delay: 0.5s;
   }
 }
 </style>
