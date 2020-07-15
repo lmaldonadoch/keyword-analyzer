@@ -19,7 +19,7 @@
 
 ## Vide Presentation
 
-[Video Presentation](https://www.loom.com/share/79e43ce6c956441599f2da70af2011e2)
+[Video Presentation](https://www.loom.com/share/c010d24b752f405eab7d650cdb4754b2)
 
 ## Vue Learning Schedule
 
