@@ -17,10 +17,6 @@
 
 [Live Version](https://keyword-analyzer.herokuapp.com/)
 
-## Vide Presentation
-
-[Video Presentation](https://www.loom.com/share/c010d24b752f405eab7d650cdb4754b2)
-
 ## Vue Learning Schedule
 
 | DAYS  |                                         OBJECTIVE                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               DESCRIPTION                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                   OUTCOME                                                                                                                    | STATUS  |
