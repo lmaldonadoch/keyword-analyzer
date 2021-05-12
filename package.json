@@ -10,7 +10,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
     "bootstrap-vue": "^2.15.0",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "chartkick": "^3.2.0",
     "core-js": "^3.6.5",
     "cors": "^2.8.4",
