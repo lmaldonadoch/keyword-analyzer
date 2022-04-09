@@ -17,7 +17,7 @@
     "express": "^4.16.3",
     "firebase": "^7.16.0",
     "google-trends-api": "^4.9.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.0",
     "vue-chartkick": "^0.6.0",
